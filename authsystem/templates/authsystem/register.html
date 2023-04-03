@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+    <head>
+        <title>Registration page</title>
+        <link rel="stylesheet" href="{% static 'authsystem/main.css' %}">
+    </head>
+    <body>
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toogle-btn" onclick="Register()">Registration</button>
+                </div>
+                <form id="Register" class="input-group" method="post">
+                    {%csrf_token%}
+                    <input name="username" type="text" class="input-field" placeholder="username" required>
+                    <input name="email" type="email" class="input-field" placeholder="Enter Email" required>
+                    <input name="password1" type="password" class="input-field" placeholder="Enter Password" required>
+                    <input name="password2" type="password" class="input-field" placeholder="Confirm Password" required>
+                    <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+                    <button type="submit" class="submit-btn">Register</button><br>
+                    <span>Already have an account? <a style="text-decoration: none" href="{% url 'signin' %}">Login here</a></span>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

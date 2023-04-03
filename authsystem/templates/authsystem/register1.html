@@ -1,0 +1,48 @@
+{% extends 'authsystem/base.html' %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-8">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header"><h3 class="text-center font-weight-light my-4">Join Today</h3></div>
+        <div class="card-body">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required>
+              <label for="email">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input class="form-control" id="username" name="username" type="text" placeholder="Username" required>
+              <label for="username">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input class="form-control" id="pass1" name="password1" type="password" placeholder="Password" required>
+              <label for="pass1">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="pass2" name="password2" type="password" placeholder="Password" required>
+                <label for="pass2">confirm password</label>
+              </div>
+              <small class="text-muted">Have an account? <a style="text-decoration: none; font-size: 15px;" href="{% url 'signin' %}">login</a></small>
+            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+              <button class="btn btn-primary" type="submit">Register</button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

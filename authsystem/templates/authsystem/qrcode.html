@@ -1,0 +1,31 @@
+{% extends 'authsystem/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="post" action="{% url 'authenticate' %}">
+      <h2 class="mb-3">Scan QR Code</h2>
+      <p>Use your mobile device to scan the QR code below to log in to our application.</p>
+      <div class="mb-3" id="qr-code"> </div>
+      <p class="text-muted">If you don't have a QR code scanner app, you can download one from the app store for your device.</p>
+    </form>
+      
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    new QRCode(document.getElementById("qr-code"), "{{ qr_token }}");
+  </script>
+
+{% endblock %}
+
+
+
+
+
+
+<!-- qrcode.html -->
+
